@@ -1,0 +1,48 @@
+{% extends "dappx/base.html" %}
+{% block body_block %}
+<div class="container">
+  <div class="jumbotron">
+    <h1>Welcome to the Djungle !</h1>
+    {% if user.is_authenticated %}
+        <h2>Hello {{ user.username }}</h2>
+<div class="container">
+    <table class="table" align="center" bgcolor="white"><font color="black"><center> <h1>User Information</h1></center></font><br>
+
+    <tr class=" my-2 mx-2">
+       <th class="my-2 mx-2">Sr. No. </th>
+       <th> UserName </th>
+       <th>Email-ID</th>
+       <th>Password</th>
+       <th>Mobile-No</th>
+
+       <th>EDIT</th>
+       <th>Delete</th>
+        <th>
+            <a href="{% url 'dappx:register' %}" class="btn btn-outline-success">
+                    <i class="fas fa-plus"></i> AddNew
+            </a>
+        </th>
+    </tr>
+    {% for item in dataa %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ item.user.username}}</td>
+        <td>{{ item.user.email}}</td>
+        <td>Encrypted</td>
+         <td>{{ item.mobile}}</td>
+        <td></td>
+        <td><a class="btn btn-secondary" href="#">Update</a></td>
+        <td><a class="btn btn-danger" href="#">Delete</a></td>
+    </tr>
+    {% endfor %}
+
+    </table>
+    </div>
+
+    {% else %}
+        <h2>Register or Login if you'd like to</h2>
+    {% endif %}
+  </div>
+
+</div>
+{% endblock %}

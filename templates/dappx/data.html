@@ -1,0 +1,49 @@
+{% extends "dappx/base.html" %}
+{% block body_block %}
+<div class="container mt-3">
+    <div class="topnav">
+        <a  name="user"> Log In : {{request.user.username }} </a>
+
+
+    </div>
+    </div>
+    <hr>
+
+
+
+    <br>
+<div class="container">
+    <table class="table" align="center" bgcolor="white"><font color="black"><center> <h1>Employee Information</h1></center></font><br>
+
+    <tr class=" my-2 mx-2">
+       <th class="my-2 mx-2">Sr. No. </th>
+       <th> UserName </th>
+       <th>Email-ID</th>
+       <th>Password</th>
+       <th>Mobile-No</th>
+
+       <th>EDIT</th>
+       <th>Delete</th>
+        <th>
+            <a href="#" class="btn btn-outline-success">
+                    <i class="fas fa-plus"></i> AddNew
+            </a>
+        </th>
+    </tr>
+    {% for item in dataa %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ item.user.username}}</td>
+        <td>{{ item.user.email}}</td>
+        <td>Encrypted</td>
+         <td>{{ item.mobile}}</td>
+        <td></td>
+        <td><a class="btn btn-secondary" href="#">Update</a></td>
+        <td><a class="btn btn-danger" href="#">Delete</a></td>
+    </tr>
+    {% endfor %}
+
+    </table>
+    </div>
+{% endblock %}
+
